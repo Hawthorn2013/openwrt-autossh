@@ -6,9 +6,9 @@
 ]]--
 
 m = Map("autossh", translate("AutoSSH"),
-	translate("设置路由器的 SSH 反向隧道"))
+	translate("Monitor and restart ssh sessions."))
 
-s = m:section(TypedSection, "autossh", translate("AutoSSH 设置"))
+s = m:section(TypedSection, "autossh", translate("AutoSSH Configuration"))
 s.anonymous   = true
 s.addremove   = true
 
@@ -16,21 +16,24 @@ o = s:option(Flag, "enabled", translate("Enable"))
 o.default     = o.enabled
 o.rmempty     = false
 
-o = s:option(Value, "localport", translate("本地端口"))
+o = s:option(Value, "localport", translate("Local Port"))
 o.placeholder = 22
 o.datatype    = "port"
 o.rmempty     = false
 
-o = s:option(Value, "remoteport", translate("远程端口"))
+o = s:option(Value, "remoteport", translate("Remote Port"))
 o.placeholder = 19999
 o.datatype    = "port"
 o.rmempty     = false
 
-o = s:option(Value, "monitorport", translate("监视端口"))
+o = s:option(Value, "monitorport", translate("Monitoring Port"))
 o.datatype    = "port"
 o.rmempty     = false
 
-o = s:option(Value, "ssh", translate("远程登陆"))
+o = s:option(Value, "monitorport", translate("Echo Port"))
+o.datatype    = "port"
+
+o = s:option(Value, "ssh", translate("SSH Options"))
 o.rmempty     = false
 
 o = s:option(Value, "AUTOSSH_FIRST_POLL", translate("AUTOSSH_FIRST_POLL"),
