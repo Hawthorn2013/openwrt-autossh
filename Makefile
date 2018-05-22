@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=autossh
 PKG_VERSION:=1.4e
-PKG_RELEASE:=6
+PKG_RELEASE:=7
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tgz
 PKG_SOURCE_URL:=http://www.harding.motd.ca/autossh/
@@ -57,8 +57,8 @@ define Package/autossh/install
 	$(INSTALL_DATA) ./files/autossh.hotplug $(1)/etc/hotplug.d/iface/20-autossh
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./files/autossh_controller.lua $(1)/usr/lib/lua/luci/controller/autossh.lua
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi
-	$(INSTALL_DATA) ./files/autossh_cbi.lua $(1)/usr/lib/lua/luci/model/cbi/autossh.lua
+	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/autossh
+	$(INSTALL_DATA) ./files/autossh_cbi/*.lua $(1)/usr/lib/lua/luci/model/cbi/autossh
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
 	$(INSTALL_BIN) ./files/autossh.uci $(1)/etc/uci-defaults/luci-autossh
 endef

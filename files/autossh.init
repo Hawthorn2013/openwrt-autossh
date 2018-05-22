@@ -36,7 +36,6 @@ start_instance() {
 	config_get AUTOSSH_NTSERVICE	"$1"  'AUTOSSH_NTSERVICE'
 	config_get AUTOSSH_PATH		"$1"  'AUTOSSH_PATH'
 	config_get AUTOSSH_PIDFILE	"$1"  'AUTOSSH_PIDFILE'
-	config_get poll			"$1"  'poll'
 	config_get AUTOSSH_POLL		"$1"  'AUTOSSH_POLL'
 	config_get AUTOSSH_PORT		"$1"  'AUTOSSH_PORT'
 	[ ! -z "$AUTOSSH_FIRST_POLL" ]		&& export AUTOSSH_FIRST_POLL="${AUTOSSH_FIRST_POLL}"
@@ -61,7 +60,7 @@ start_instance() {
 
 start() {
 	config_load 'autossh'
-	config_foreach start_instance 'autossh'
+	config_foreach start_instance 'service'
 }
 
 stop() {
